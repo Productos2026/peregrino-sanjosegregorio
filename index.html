@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Peregrino de San José Gregorio | @yeysonps</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1b4d3e; /* Verde solemne */
+            --secondary-color: #d4af37; /* Tono dorado/esperanza */
+            --dark-color: #2c3e50;
+            --light-color: #f9f9f9;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+        }
+
+        /* Animación de entrada suave */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animated-image {
+            animation: fadeInUp 1.2s ease-out forwards;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            margin: 1.5rem auto;
+            display: block;
+        }
+
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+        }
+
+        header .logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.2rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(27, 77, 62, 0.85), rgba(27, 77, 62, 0.85)), url('hero-bg.jpg') center/cover no-repeat;
+            color: var(--white);
+            text-align: center;
+            padding: 6rem 1rem;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem auto;
+            font-weight: 300;
+        }
+
+        .quote {
+            font-style: italic;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-left: 4px solid var(--secondary-color);
+            max-width: 800px;
+            margin: 2rem auto 0 auto;
+            text-align: left;
+        }
+
+        section {
+            padding: 4rem 10%;
+        }
+
+        section:nth-child(even) {
+            background-color: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-content-flex {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .section-content-flex > div {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+        }
+
+        .submenu-box {
+            background: #eef2f1;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        /* Estilos de Contacto y Comentarios */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        .contact-info, .comment-box-container {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .contact-info ul {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .contact-info li {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-submit {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            background-color: #14372c;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsividad para Móviles */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            section {
+                padding: 3rem 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Menú -->
+    <header>
+        <div class="logo">El Peregrino de San José Gregorio</div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#peregrino">El Peregrino</a></li>
+                <li><a href="#ruta">La Ruta</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#libro">El Libro</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sección Inicio -->
+    <section id="inicio" class="hero">
+        <h1>El Peregrino de San José Gregorio</h1>
+        <p>Acompaña los pasos de Yeyson Paredes (@yeysonps) en su travesía de más de 600 kilómetros desde Isnotú hasta Caracas, llevando el mensaje de amor y esperanza de San José Gregorio Hernández.</p>
+        
+        <!-- Imagen con animación en sección Inicio -->
+        <img src="yeyson-inicio.jpg" alt="Yeyson Paredes caminando en su peregrinación" class="animated-image" style="max-width: 400px;">
+
+        <div class="quote">
+            "Hay caminos que no se recorren solo con los pies, sino con el alma. Esta es la historia de una promesa de fe convertida en pasos de esperanza, uniendo la tierra sagrada de Isnotú con el corazón de Venezuela de la mano del Médico de los Pobres."
+        </div>
+    </section>
+
+    <!-- Sección El Peregrino -->
+    <section id="peregrino">
+        <h2 class="section-title">Conoce al Peregrino: La Promesa de Yeyson Paredes</h2>
+        <div class="section-content-flex">
+            <div>
+                <p>El origen de la promesa de Yeyson Paredes, conocido cariñosamente como el <strong>"Peregrino de San José Gregorio"</strong>, nace de una profunda devoción a San José Gregorio Hernández y de un legado familiar impulsado por su abuela, quien también fue peregrina y sembró en él el amor por la fe y el servicio al prójimo.</p>
+                <p style="margin-top: 1rem;">Cada paso recorrido representa no solo el cumplimiento de una promesa espiritual, sino un acto de entrega por Venezuela, llevando consuelo, unión y oraciones por los enfermos y los más necesitados a lo largo de cada camino andado.</p>
+            </div>
+            <div>
+                <!-- Imagen con animación en sección El Peregrino -->
+                <img src="yeyson-peregrino.jpg" alt="Yeyson Paredes devoto de San José Gregorio" class="animated-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección La Ruta de la Fe -->
+    <section id="ruta">
+        <h2 class="section-title">La Ruta de la Fe: 83 Días de Camino y Esperanza</h2>
+        <p style="text-align: center; margin-bottom: 2rem;">Una travesía monumental que desafió la distancia y el clima, demostrando que la fe mueve montañas.</p>
+        
+        <!-- Imagen con animación en sección La Ruta -->
+        <img src="yeyson-ruta.jpg" alt="Recorrido de la ruta de fe por Venezuela" class="animated-image" style="max-width: 600px; margin-bottom: 3rem;">
+
+        <div class="grid-cards">
+            <div class="card">
+                <h3>Punto de Partida</h3>
+                <p><strong>Santuario de Isnotú, Estado Trujillo</strong></p>
+                <p style="margin-top: 0.5rem; font-size: 0.95rem;">Inició el 8 de junio de 2026.</p>
+            </div>
+            <div class="card">
+                <h3>Recorrido</h3>
+                <p><strong>83 Días de caminata a pie</strong></p>
+                <p style="margin-top: 0.5rem; font-size: 0.95rem;">Atravesando con devoción varios estados del país (Trujillo, Portuguesa, Cojedes, Carabobo y Aragua).</p>
+            </div>
+            <div class="card">
+                <h3>Punto de Llegada</h3>
+                <p><strong>Iglesia Nuestra Señora de La Candelaria, Caracas</strong></p>
+                <p style="margin-top: 0.5rem; font-size: 0.95rem;">Culminó el 30 de agosto de 2026, donde reposan los sagrados restos del santo venezolano.</p>
+            </div>
+        </div>
+
+        <!-- Subsección Caracas es San José Gregorio -->
+        <div class="submenu-box">
+            <h3>Caracas es San José Gregorio</h3>
+            <p style="margin-top: 0.5rem;">Más allá de la llegada a la capital, esta subsección da vida a un proyecto continuo y solidario para peregrinar por los barrios y comunidades vulnerables de la ciudad capital.</p>
+            <p style="margin-top: 0.5rem;">Su propósito es llevar la fe, la devoción y los valores a niños y jóvenes, visitando de cerca a personas enfermas para brindarles consuelo, compañía y las fuerzas espirituales necesarias para avanzar en su recuperación, manteniendo vivo el legado del Médico de los Pobres en cada rincón de Caracas.</p>
+        </div>
+    </section>
+
+    <!-- Sección Galería Multimedia -->
+    <section id="galeria">
+        <h2 class="section-title">El Camino en Imágenes y Videos</h2>
+        <p style="text-align: center; margin-bottom: 1.5rem;">Revive los momentos más emotivos de la peregrinación. Desde los paisajes andinos de Trujillo hasta el cálido recibimiento en Caracas, un registro visual de la fe compartida con cada comunidad, devoto y caminante que se sumó a esta travesía.</p>
+        
+        <!-- Imagen con animación en sección Galería -->
+        <img src="yeyson-galeria.jpg" alt="Momentos destacados de la galería audiovisual" class="animated-image" style="max-width: 500px;">
+    </section>
+
+    <!-- Sección El Libro -->
+    <section id="libro" style="background-color: var(--white);">
+        <h2 class="section-title">Próximamente: El Libro del Peregrino</h2>
+        <div class="section-content-flex" style="align-items: center;">
+            <div style="flex: 1;">
+                <!-- Imagen con animación en sección El Libro -->
+                <img src="yeyson-libro.jpg" alt="Próximo libro de las vivencias del peregrino" class="animated-image" style="max-width: 350px;">
+            </div>
+            <div style="flex: 1;">
+                <p style="max-width: 700px; margin: 0 auto;">Una obra inspirada en las vivencias, anécdotas, milagros y reflexiones recogidas a lo largo de los caminos de Venezuela. Muy pronto encontrarás aquí toda la información sobre su lanzamiento, sinopsis y puntos de adquisición para llevar esta inspiradora historia a tu hogar.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Contacto y Comentarios -->
+    <section id="contacto">
+        <h2 class="section-title">Contacto y Mensajes para el Peregrino</h2>
+        
+        <div class="contact-grid">
+            <!-- Columna de Datos de Contacto y Redes -->
+            <div class="contact-info">
+                <h3>Conéctate con el Peregrino</h3>
+                <p style="margin-top: 0.5rem; font-size: 0.95rem;">Sigue de cerca cada paso y mantente en comunicación con el equipo de producción.</p>
+                
+                <ul>
+                    <li>📷 <strong>Instagram:</strong> <a href="https://instagram.com/yeysonps" target="_blank">@yeysonps</a></li>
+                    <li>▶️ <strong>YouTube:</strong> <a href="#" target="_blank">elperegrinodesanjosegregorio</a></li>
+                    <li>📞 <strong>Producción:</strong> <a href="tel:+584129232971">+58 412-9232971</a></li>
+                    <li>✉️ <strong>Correo:</strong> <a href="mailto:produccioneswayu@gmail.com">produccioneswayu@gmail.com</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna de Caja de Comentarios -->
+            <div class="comment-box-container">
+                <h3>Déjale un mensaje a Yeyson</h3>
+                <p style="margin-top: 0.5rem; font-size: 0.95rem; margin-bottom: 1.5rem;">Comparte tu palabra de aliento, petición o testimonio.</p>
+                
+                <form onsubmit="event.preventDefault(); alert('¡Gracias por tu mensaje! Ha sido registrado con éxito.');">
+                    <div class="form-group">
+                        <label for="nombre">Tu Nombre</label>
+                        <input type="text" id="nombre" required placeholder="Escribe tu nombre completo">
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje">Tu Mensaje o Testimonio</label>
+                        <textarea id="mensaje" rows="4" required placeholder="Escribe tu mensaje para Yeyson Paredes..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Enviar Comentario</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 elperegrinodesanjosegregorio.com | Todos los derechos reservados.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem;">Acompaña a @yeysonps en su camino de fe.</p>
+    </footer>
+
+</body>
+</html>
